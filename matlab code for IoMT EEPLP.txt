@@ -1,0 +1,287 @@
+% Simulation Parameters
+simRounds = 100:100:1000;
+OperatingSystem = 'Windows 10 Pro 64-bit';
+ComputerSpecs = 'HP Intel® Core(TM) i3-2310M CPU @ 2.10GHz (4 CPUs), 2.1GHz, RAM: 8GB';
+OfferedLoad_Node = '10,000 bits/Node';
+AverageWaitTime = '4s/Packet';
+BER_Threshold = '0.5t';
+No_of_Body_Sensors = 10;
+Velocity_WBANs = '1.5 m/sec';
+Body_Sensors_Sensing_Range = '0-1m';
+PropagationModel = 'Free Space';
+AntennaType = 'Omni-directional';
+IEEE_Standard = 'IEEE 802.11.4';
+Traffic = 'CBR';
+ProposedScheme = 'EEPLP';
+State_of_the_Art_Protocols = {'LAEEBA', 'EEDLABA', 'Co-LAEEBA', 'EAR', 'EAWD', 'PERA', 'EERDT'};
+SimulationArea = '500m * 500m';
+Amplifier_Eamp = '1.97n J/bit';
+DC_Current_RX = '19mA';
+DC_Current_TX = '10.6mA';
+EDA = '7n J/bit';
+Frequency_f = '2.40GHz';
+Max_Initial_Energy = '5 joules';
+Min_Supply_Voltage = '01.90V';
+No_of_Nodes = 25;
+No_of_Relay_Nodes = 5;
+SimulationTime = '1000 sec';
+Reception_Energy_Erx_elec = '36.2n J/bit';
+Transmission_Energy_Etx_elec = '16.8n J/bit';
+Channel_Category = 'Wireless-802.11s';
+Wavelength_lambda = '0.126m';
+
+% Network Lifetime (Alive/Dead Nodes)
+NLT = [
+    0 0 0 0 0 0;
+    2 3 3 2 1 0;
+    5 5 6 5 4 0;
+    6 6 7 8 6 0;
+    8 8 9 8 7 0;
+    10 11 12 10 9 0;
+    12 13 14 15 10 1;
+    12 13 14 16 11 2;
+    14 15 16 18 12 4;
+    16 17 17 19 13 6
+];
+
+% Average Network Lifetime values
+avgNLT = [8.5 9.1 9.8 10.1 7.3 1.3];
+
+% Throughput (bps)
+throughput = [
+    5100 5600 4500 4600 5100 6900;
+    5000 5600 4400 4500 5000 6700;
+    4650 5400 4200 4300 4900 6500;
+    4600 5300 4000 4100 4900 6400;
+    4500 5200 3900 4000 4800 6300;
+    4400 5100 3700 3800 4700 6200;
+    4300 5000 3500 3600 4500 6100;
+    4200 4000 3300 3400 4400 6000;
+    4100 3000 3100 3200 4200 5500;
+    4000 2000 2900 3000 4150 5000
+];
+
+% Average Throughput values
+avgThroughput = [4485 4620 3750 3850 4665 6160];
+
+% Residual Energy (Joules)
+residualEnergy = [
+    5 5 5 5 5 5;
+    4.5 4 4.6 4.7 4.6 5;
+    4.3 3.7 4.1 4.5 3.9 4.9;
+    4.1 3 3.6 4.3 2.9 4.9;
+    4 2.9 3.5 4 2.6 4.7;
+    3.8 2.7 3.3 3.7 2.3 4.3;
+    3.6 2.4 3 3.2 1 4;
+    3.5 2.4 2.8 3 0.9 3.9;
+    2 2 2.6 2.9 0.5 3.9;
+    1.5 1.9 2 1 0.2 3.8
+];
+
+% Average Residual Energy values
+avgResidualEnergy = [3.63 3 3.45 3.63 2.39 4.44];
+
+% Success Ratio (PDR/%age)
+successRatio = [
+    50 60 70 80 41 100;
+    49 59 69 79 42 99;
+    48 58 68 78 44 98;
+    47 57 67 77 45 97;
+    46 56 66 76 50 97;
+    44 55 65 75 52 96;
+    43 54 64 74 54 95;
+    42 48 58 73 54 95;
+    41 49 63 73 52 95;
+    40 53 60 73 50 94
+];
+
+% Average PDR values
+avgPDR = [45 54.9 65 75.8 48.4 96.6];
+
+% Mean Square Error (MSE)
+MSE = [
+    0.6 0.9 0.5 0.4 0.3 0.1;
+    0.7 1 0.8 0.43 0.35 0.12;
+    0.8 1.2 1 0.45 0.38 0.14;
+    0.9 1.3 1.2 0.5 0.4 0.15;
+    1 1.35 1.3 0.52 0.43 0.18;
+    1.1 1.38 1.33 0.55 0.45 0.2;
+    1.3 1.4 1.36 0.59 0.5 0.25;
+    1.5 1.49 1.39 1 0.52 0.27;
+    1.7 1.5 1.4 1.2 0.55 0.3;
+    1.9 1.59 1.45 1.3 0.59 0.33
+];
+
+% Average MSE values
+avgMSE = [1.15 1.311 1.173 0.694 0.447 0.204];
+
+% Normalized Routing Load (%age)
+NRL = [
+    33 31 29 14 23 9;
+    34 33 31 15 34 10;
+    36 35 33 16 35 11;
+    39 36 35 18 27 12;
+    40 38 36 19 28 13;
+    43 40 38 21 30 15;
+    45 43 40 23 32 16;
+    46 45 41 24 34 18;
+    48 46 43 25 35 19;
+    52 50 44 27 37 21
+];
+
+% Average NRL values
+avgNRL = [41.6 39.7 37 20.2 31.5 14.4];
+
+% Routing Hops Count (hops)
+hopsCount = [
+    0 0;
+    6 2;
+    6 3;
+    8 4;
+    10 5;
+    10 6;
+    15 6;
+    16 6;
+    18 7;
+    19 9;
+    21 9
+];
+
+% Cumulative Performance
+cumulativePerformance = [
+    0 0;
+    80 100;
+    81 100;
+    82 99;
+    85 98.5;
+    86 98.9;
+    87 100;
+    89 97;
+    90 97.9;
+    90 98;
+    92 96.9
+];
+
+% Plotting the figures separately
+protocols = {'EEDLABA', 'PERA', 'EERDT', 'LAEEBA', 'Co-LAEEBA', 'EEPLP'};
+
+% Network Lifetime Plot
+figure;
+plot(simRounds, NLT, 'LineWidth', 2);
+title('Network Lifetime (Alive/Dead Nodes)');
+xlabel('Simulation Rounds');
+ylabel('Number of Nodes');
+legend(protocols, 'Location', 'Best');
+grid on;
+
+% Throughput Plot
+figure;
+plot(simRounds, throughput, 'LineWidth', 2);
+title('Throughput (bps)');
+xlabel('Simulation Rounds');
+ylabel('Throughput (bps)');
+legend(protocols, 'Location', 'Best');
+grid on;
+
+% Residual Energy Plot
+figure;
+plot(simRounds, residualEnergy, 'LineWidth', 2);
+title('Residual Energy (Joules)');
+xlabel('Simulation Rounds');
+ylabel('Energy (Joules)');
+legend(protocols, 'Location', 'Best');
+grid on;
+
+% Success Ratio Plot
+figure;
+plot(simRounds, successRatio, 'LineWidth', 2);
+title('Success Ratio (PDR/%age)');
+xlabel('Simulation Rounds');
+ylabel('PDR (%)');
+legend(protocols, 'Location', 'Best');
+grid on;
+
+% Mean Square Error Plot
+figure;
+plot(simRounds, MSE, 'LineWidth', 2);
+title('Mean Square Error (MSE)');
+xlabel('Simulation Rounds');
+ylabel('MSE');
+legend(protocols, 'Location', 'Best');
+grid on;
+
+% Normalized Routing Load Plot
+figure;
+plot(simRounds, NRL, 'LineWidth', 2);
+title('Normalized Routing Load (%age)');
+xlabel('Simulation Rounds');
+ylabel('NRL (%)');
+legend(protocols, 'Location', 'Best');
+grid on;
+
+% Routing Hops Count Plot for two legends
+figure;
+plot(hopsCount(:,1), hopsCount(:,2), 'LineWidth', 2);
+title('Routing Hops Count');
+xlabel('State-of-the-Art');
+ylabel('EEPLP (Proposed)');
+legend({'State-of-the-Art', 'EEPLP (Proposed)'}, 'Location', 'Best');
+grid on;
+
+% Cumulative Performance Plot for two legends
+figure;
+plot(cumulativePerformance(:,1), cumulativePerformance(:,2), 'LineWidth', 2);
+title('Cumulative Performance');
+xlabel('State-of-the-Art');
+ylabel('EEPLP (Proposed)');
+legend({'State-of-the-Art', 'EEPLP (Proposed)'}, 'Location', 'Best');
+grid on;
+
+% Plotting the average values
+% Average Network Lifetime Plot
+figure;
+bar(avgNLT, 'grouped');
+title('Average Network Lifetime (NLT)');
+xlabel('Protocols');
+ylabel('Average NLT');
+set(gca, 'XTickLabel', protocols);
+
+% Average Throughput Plot
+figure;
+bar(avgThroughput, 'grouped');
+title('Average Throughput (bps)');
+xlabel('Protocols');
+ylabel('Average Throughput (bps)');
+set(gca, 'XTickLabel', protocols);
+
+% Average Residual Energy Plot
+figure;
+bar(avgResidualEnergy, 'grouped');
+title('Average Residual Energy (Joules)');
+xlabel('Protocols');
+ylabel('Average Residual Energy (Joules)');
+set(gca, 'XTickLabel', protocols);
+
+% Average PDR Plot
+figure;
+bar(avgPDR, 'grouped');
+title('Average PDR (%)');
+xlabel('Protocols');
+ylabel('Average PDR (%)');
+set(gca, 'XTickLabel', protocols);
+
+% Average MSE Plot
+figure;
+bar(avgMSE, 'grouped');
+title('Average MSE');
+xlabel('Protocols');
+ylabel('Average MSE');
+set(gca, 'XTickLabel', protocols);
+
+% Average NRL Plot
+figure;
+bar(avgNRL, 'grouped');
+title('Average Normalized Routing Load (%)');
+xlabel('Protocols');
+ylabel('Average NRL (%)');
+set(gca, 'XTickLabel', protocols);
